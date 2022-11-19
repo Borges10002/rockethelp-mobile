@@ -1,0 +1,66 @@
+criar projeto 
+expo init + nome do projeto 
+
+iniciar o projeto com typescript
+expo start
+
+biblioteca de componentes
+https://docs.nativebase.io/?utm_source=HomePage&utm_medium=header&utm_campaign=NativeBase_3
+
+npm
+https://docs.nativebase.io/install-expo
+
+npm install native-base
+expo install react-native-svg@12.1.1
+expo install react-native-safe-area-context@3.3.2
+
+fonts
+expo install expo-font @expo-google-fonts/roboto 
+
+https://www.npmjs.com/package/react-native-svg-transformer
+npm i react-native-svg-transformer --save-dev
+
+pegas as configuracao e copia dentro metro.config.js:
+Step 3: Configure the react native packager
+For Expo SDK v41.0.0 or newer
+Merge the contents from your project's metro.config.js file with this config (create the file if it does not exist already).
+
+Using TypeScript
+If you are using TypeScript, you need to add this to your declarations.d.ts file (create one if you don't have one already, but don't put in the root folder of your project):
+
+declare module "*.svg" {
+  import React from 'react';
+  import { SvgProps } from "react-native-svg";
+  const content: React.FC<SvgProps>;
+  export default content;
+}
+
+utlizar um snip autocompleto 
+nbc
+
+ICON
+https://phosphoricons.com/
+https://github.com/duongdev/phosphor-react-native
+npm install --save phosphor-react-native
+
+
+navegacao entre telas
+https://reactnavigation.org/docs/getting-started
+yarn add @react-navigation/native
+npx expo install react-native-screens react-native-safe-area-context
+yarn add @react-navigation/native-stack
+
+biblioteca do firebase
+https://rnfirebase.io/
+npm install --save @react-native-firebase/app
+npm i @react-native-firebase/firestore
+npm i @react-native-firebase/auth
+
+expor alterar pasta nativa do android
+expo prebuild
+
+/**************************************************************/
+executa o projeto por que o expo go nao consegue atender
+npx expo run:android
+
+/**************************************************************/

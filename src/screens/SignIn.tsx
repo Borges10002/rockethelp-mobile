@@ -33,11 +33,11 @@ export function SignIn() {
         }
 
         if (error.code === "auth/wrong-password") {
-          return Alert.alert("Entrar", "E-mail ou senha inválida.");
+          return Alert.alert("Entrar", "E-mail ou senha inválido");
         }
 
         if (error.code === "auth/user-not-found") {
-          return Alert.alert("Entrar", "E-mail ou senha inválida.");
+          return Alert.alert("Entrar", "E-mail ou senha inválido.");
         }
 
         return Alert.alert("Entrar", "Não foi possivel acessar");
@@ -45,14 +45,14 @@ export function SignIn() {
   }
 
   return (
-    <VStack flex={1} alignItems="center" bg="gray.600" px={8} pt={24}>
+    <VStack flex={1} alignItems='center' bg='gray.600' px={8} pt={24}>
       <Logo />
-      <Heading color="gray.100" fontSize="xl" mt={20} mb={6}>
+      <Heading color='gray.100' fontSize='xl' mt={20} mb={6}>
         Acessa sua conta
       </Heading>
 
       <Input
-        placeholder="E-mail"
+        placeholder='E-mail'
         mb={4}
         InputLeftElement={
           <Icon as={<Envelope color={colors.gray[300]} />} ml={4} />
@@ -61,15 +61,15 @@ export function SignIn() {
       />
       <Input
         mb={8}
-        placeholder="Senha"
+        placeholder='Senha'
         InputLeftElement={<Icon as={<Key color={colors.gray[300]} />} ml={4} />}
         secureTextEntry
         onChangeText={setPassword}
       />
 
       <Button
-        title="Entrar"
-        w="full"
+        title='Entrar'
+        w='full'
         onPress={handleSigIn}
         isLoading={isLoading}
       />

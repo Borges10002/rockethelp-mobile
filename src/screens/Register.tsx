@@ -22,81 +22,49 @@ export function Register() {
 
     setIsLoading(true);
 
-    // Create our initial doc
     firestore()
-      .collection("users")
-      .doc("frank")
-      .set({
-        name: "Frank",
-        favorites: {
-          food: "Pizza",
-          color: "Blue",
-          subject: "Recess",
-        },
-        age: 12,
+      .collection("orders")
+      .add({
+        patrimony,
+        description,
+        status: "open",
+        created_at: firestore.FieldValue.serverTimestamp(),
       })
-      .then(function () {
-        console.log("Frank created");
-      });
-
-    // Update the doc without using dot notation.
-    // Notice the map value for favorites.
-    firestore()
-      .collection("users")
-      .doc("frank")
-      .update({
-        favorites: {
-          food: "Ice Cream",
-        },
+      .then(() => {
+        Alert.alert("Solicitação", "Solicitação registrada com sucesso.");
+        navigation.goBack();
       })
-      .then(function () {
-        console.log("Frank food updated");
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+        return Alert.alert(
+          "Solicitação",
+          "Não foi possível registrar o pedido"
+        );
       });
-
-    // firestore()
-    //   .collection("orders")
-    //   .add({
-    //     patrimony,
-    //     description,
-    //     status: "open",
-    //     created_at: firestore.FieldValue.serverTimestamp(),
-    //   })
-    //   .then(() => {
-    //     console.log("TESTE");
-    //     Alert.alert("Solicitação", "Solicitação registrada com sucesso.");
-    //     navigation.goBack();
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setIsLoading(false);
-    //     return Alert.alert(
-    //       "Solicitação",
-    //       "Não foi possível registrar o pedido"
-    //     );
-    //   });
   }
 
   return (
-    <VStack flex={1} p={6} bg="gray.600">
-      <Header title="Solicitação" />
+    <VStack flex={1} p={6} bg='gray.600'>
+      <Header title='Solicitação' />
 
       <Input
-        placeholder="Número do patrimônio"
+        placeholder='Número do patrimônio'
         mt={4}
         onChangeText={setPatrimony}
       />
 
       <Input
-        placeholder="Descrição do problema"
+        placeholder='Descrição do problema'
         flex={1}
         mt={5}
         multiline
-        textAlignVertical="top"
+        textAlignVertical='top'
         onChangeText={setDescription}
       />
 
       <Button
-        title="Cadastrar"
+        title='Cadastrar'
         mt={5}
         isLoading={isLoading}
         onPress={handleNewOrderRegister}

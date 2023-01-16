@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
 import { Alert } from "react-native";
+import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
+import { useNavigation } from "@react-navigation/native";
 import {
   HStack,
+  IconButton,
   VStack,
   useTheme,
-  IconButton,
   Text,
   Heading,
   FlatList,
   Center,
 } from "native-base";
-import { useNavigation } from "@react-navigation/native";
-import auth from "@react-native-firebase/auth";
-import { SignOut, ChatTeardropText } from "phosphor-react-native";
+import { SignOut } from "phosphor-react-native";
+import { ChatTeardropText } from "phosphor-react-native";
 
 import { dateFormat } from "../utils/firestoreDateFormat";
 
@@ -29,46 +30,7 @@ export function Home() {
   const [statusSelected, setStatusSelected] = useState<"open" | "closed">(
     "open"
   );
-
   const [orders, setOrders] = useState<OrderProps[]>([]);
-
-  /* 
-  
-    {
-      id: "123",
-      patrimony: "123456",
-      when: "18/07/2022 ás 10:00",
-      status: "open",
-    },
-    {
-      id: "124",
-      patrimony: "123456",
-      when: "18/07/2022 ás 10:00",
-      status: "open",
-    },
-
-    {
-      id: "125",
-      patrimony: "123456",
-      when: "18/07/2022 ás 10:00",
-      status: "open",
-    },
-
-    {
-      id: "126",
-      patrimony: "123456",
-      when: "18/07/2022 ás 10:00",
-      status: "open",
-    },
-
-    {
-      id: "127",
-      patrimony: "123456",
-      when: "18/07/2022 ás 10:00",
-      status: "open",
-    },
-  
-  */
 
   const navigation = useNavigation();
   const { colors } = useTheme();
@@ -86,11 +48,13 @@ export function Home() {
       .signOut()
       .catch((error) => {
         console.log(error);
-        return Alert.alert("Sair", "Não foi possivel sair.");
+        return Alert.alert("Sair", "Não foi possível sair.");
       });
   }
 
   useEffect(() => {
+    setIsLoading(true);
+
     const subscriber = firestore()
       .collection("orders")
       .where("status", "==", statusSelected)
@@ -106,6 +70,7 @@ export function Home() {
             when: dateFormat(created_at),
           };
         });
+
         setOrders(data);
         setIsLoading(false);
       });
@@ -114,16 +79,15 @@ export function Home() {
   }, [statusSelected]);
 
   return (
-    <VStack flex={1} pb={6} bg="gray.700">
+    <VStack flex={1} pb={6} bg='gray.700'>
       <HStack
-        w="full"
-        justifyContent="space-between"
-        alignItems="center"
-        bg="gray.600"
+        w='full'
+        justifyContent='space-between'
+        alignItems='center'
+        bg='gray.600'
         pt={12}
         pb={5}
-        px={6}
-      >
+        px={6}>
         <Logo />
 
         <IconButton
@@ -134,31 +98,31 @@ export function Home() {
 
       <VStack flex={1} px={6}>
         <HStack
-          w="full"
+          w='full'
           mt={8}
           mb={4}
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Heading color="gray.100">Solicitações</Heading>
-          <Text color="gray.200">{orders.length}</Text>
+          justifyContent='space-between'
+          alignItems='center'>
+          <Heading color='gray.100'>Solicitações</Heading>
+
+          <Text color='gray.200'>{orders.length}</Text>
         </HStack>
 
         <HStack space={3} mb={8}>
           <Filter
-            type="open"
-            title="em andamento"
+            type='open'
+            title='em andamento'
             onPress={() => setStatusSelected("open")}
             isActive={statusSelected === "open"}
           />
+
           <Filter
-            type="closed"
-            title="finalizados"
+            type='closed'
+            title='finalizados'
             onPress={() => setStatusSelected("closed")}
             isActive={statusSelected === "closed"}
           />
         </HStack>
-
         {isLoading ? (
           <Loading />
         ) : (
@@ -168,21 +132,22 @@ export function Home() {
             renderItem={({ item }) => (
               <Order data={item} onPress={() => handleOpenDetails(item.id)} />
             )}
-            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 100 }}
             ListEmptyComponent={() => (
               <Center>
                 <ChatTeardropText color={colors.gray[300]} size={40} />
-                <Text color="gray.300" fontSize="xl" mt={6} textAlign="center">
+                <Text color='gray.300' fontSize='xl' mt={6} textAlign='center'>
                   Você ainda não possui {"\n"}
-                  solicitações {""}
-                  {statusSelected === "open" ? "em andamento" : "finalizados"}
+                  solicitações{" "}
+                  {statusSelected === "open" ? "em andamento" : "finalizadas"}
                 </Text>
               </Center>
             )}
           />
         )}
-        <Button title="Nova solicitação" onPress={handleNewOrder} />
+
+        <Button title='Nova solicitação' onPress={handleNewOrder} />
       </VStack>
     </VStack>
   );

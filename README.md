@@ -25,8 +25,8 @@ Tecnologias usado react native, typescript, expo, firebase
   </tr>
   <tr>
     <td><img src="https://github.com/Borges10002/rockethelp-mobile/blob/main/imgs/Login.jpeg" width=200 height=400></td>
-    <td><img src="" width=200 height=400></td>
-    <td><img src="" width=200 height=400></td>
+    <td><img src="https://github.com/Borges10002/rockethelp-mobile/blob/main/imgs/Home%20(em%20andamento).jpeg" width=200 height=400></td>
+    <td><img src="https://github.com/Borges10002/rockethelp-mobile/blob/main/imgs/Home%20(finalizados).jpeg" width=200 height=400></td>
   </tr>
  </table>
  
@@ -38,9 +38,9 @@ Tecnologias usado react native, typescript, expo, firebase
      <td align="center">Solicitação (finalizada)</td>
   </tr>
   <tr>
-    <td><img src="" width=200 height=400></td>
-     <td><img src="" width=200 height=400></td>
-     <td><img src="" width=200 height=400></td>
+    <td><img src="https://github.com/Borges10002/rockethelp-mobile/blob/main/imgs/Nova%20solicita%C3%A7%C3%A3o.jpeg" width=200 height=400></td>
+     <td><img src="https://github.com/Borges10002/rockethelp-mobile/blob/main/imgs/Solicita%C3%A7%C3%A3o%20(em%20andamento).jpeg" width=200 height=400></td>
+     <td><img src="https://github.com/Borges10002/rockethelp-mobile/blob/main/imgs/Solicita%C3%A7%C3%A3o%20(finalizada).jpeg" width=200 height=400></td>
   </tr>
  </table>
  

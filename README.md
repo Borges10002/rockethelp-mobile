@@ -14,13 +14,13 @@ Projeto: 🚀 Concluído 🚀
 RocketHelp é uma aplicação Mobile que funciona tanto em Android como IOS, que ajuda no sistema de solicitações para suporte.
 
 ## 🛠 Tecnologias
-
 As seguintes ferramentas foram usadas na construção do projeto:
-<p display=flex>
-   <img src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
-   <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
-   <img src="https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37">
-   <img src="https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase">
+<ol> 
+      <li>React Native</li>
+      <li>TypeScript</li>
+      <li>Expo</li>
+      <li>FireBase</li>
+    </ol>
 <p/>
 
 ## 📱 Telas
